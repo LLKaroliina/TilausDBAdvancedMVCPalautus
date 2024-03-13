@@ -29,7 +29,7 @@
     </script>
 }
 
-<h2>TilausOtsikot</h2>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -61,10 +61,10 @@
 
         @foreach (var item in (dynamic) Model)
         {
-            //System.Diagnostics.Debug.WriteLine("tg");
+            
             <div class="card">
                 <div class="card-header">
-                    <!--BS5-->
+                    
                     <a class="card-link showOrderClass" data-orderid="@item.TilausID" data-bs-toggle="collapse" href="#collapse_@item.TilausID">
                         <form>
                             <div class="input-group">
@@ -72,7 +72,7 @@
                                     <span class="input-group-text">@item.TilausID</span>
                                 </div>
 
-                                @*<input type="text" class="form-control px-2" value="@item.TilausID" disabled>*@
+                                <input type="text" class="form-control px-2" value="@item.TilausID" disabled>
                                 <input type="text" class="form-control px-2" value="@item.Asiakkaat.Nimi" disabled>
                                 <input type="text" class="form-control px-2" value="@item.Postitoimipaikat.Postitoimipaikka" disabled>
                                 <input type="text" class="form-control px-2" value="@item.Toimitusosoite" disabled>
@@ -85,11 +85,11 @@
                         </form>
                     </a>
                 </div>
-                <!--BS5-->
+                
                 <div id="collapse_@item.TilausID" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">
                         <p>Ladataan tilauksen @item.TilausID rivit</p>
-                        <!--jQuery renderöi tilauksen rivitiedot-->
+                        @*jQuery renderöi tilauksen rivitiedot*@
                         <div id="orderDetails_@item.TilausID"></div>
                     </div>
                 </div>
