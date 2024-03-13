@@ -7,7 +7,7 @@
 <h2>TilausOtsikot</h2>
 
 @section scripts {
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(function () {
             $(".showOrderClass").click(function () {
                 let tilausId = $(this).data("tilausid");
@@ -17,12 +17,29 @@
                 //PartialView:
                 var url = "/Tilaukset/_TilausRivit/?TilausID=" + tilausId;
                 $("#orderDetails_" + tilausId).append(" <b>Loading order " + tilausId +
-                " rows...</b>");
+                    " rows...</b>");
                 var $detailDiv = $("#orderDetails_" + tilausId);
                 console.log(url);
                 console.log($detailDiv);
                 $.get(url, function (data) {
-                $detailDiv.replaceWith(data);
+                    $detailDiv.replaceWith(data);
+                });
+            });
+        });
+    </script>*@
+
+    <script type="text/javascript">
+        $(function () {
+            $(".showOrderClass").click(function () {
+                let tilausId = $(this).data("tilausid");
+
+                var url = "/Tilaukset/_TilausRivit/?TilausID=" + tilausId;
+
+                $("#tilausTiedot_" + tilausId).append(" <b>Ladataan tilauksen " + tilausId + " rivejä...</b>");
+
+                var $detailDiv = $("#tilausTiedot_" + tilausId);
+                $.get(url, function (data) {
+                    $detailDiv.replaceWith(data);
                 });
             });
         });
@@ -59,20 +76,20 @@
 
     <div id="accordion">
 
-        @foreach (var item in (dynamic) Model)
+        @foreach (var item in (dynamic)Model)
         {
-            
+
             <div class="card">
                 <div class="card-header">
-                    
-                    <a class="card-link showOrderClass" data-orderid="@item.TilausID" data-bs-toggle="collapse" href="#collapse_@item.TilausID">
+
+                    <a class="card-link showOrderClass" data-tilausid="@item.TilausID" data-bs-toggle="collapse" href="#collapse_@item.TilausID">
                         <form>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">@item.TilausID</span>
                                 </div>
 
-                                <input type="text" class="form-control px-2" value="@item.TilausID" disabled>
+                                @*<input type="text" class="form-control px-2" value="@item.TilausID" disabled>*@
                                 <input type="text" class="form-control px-2" value="@item.Asiakkaat.Nimi" disabled>
                                 <input type="text" class="form-control px-2" value="@item.Postitoimipaikat.Postitoimipaikka" disabled>
                                 <input type="text" class="form-control px-2" value="@item.Toimitusosoite" disabled>
@@ -85,12 +102,12 @@
                         </form>
                     </a>
                 </div>
-                
+
                 <div id="collapse_@item.TilausID" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">
-                        <p>Ladataan tilauksen @item.TilausID rivit</p>
+                        @*<p>Ladataan tilauksen @item.TilausID rivit</p>*@
                         @*jQuery renderöi tilauksen rivitiedot*@
-                        <div id="orderDetails_@item.TilausID"></div>
+                        <div id="tilausTiedot_@item.TilausID"></div>
                     </div>
                 </div>
             </div>
