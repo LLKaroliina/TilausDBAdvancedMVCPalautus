@@ -6,8 +6,8 @@
 
 <h2>TilausOtsikot</h2>
 
-@section scripts {
-    @*<script type="text/javascript">
+
+@*<script type="text/javascript">
         $(function () {
             $(".showOrderClass").click(function () {
                 let tilausId = $(this).data("tilausid");
@@ -27,7 +27,7 @@
             });
         });
     </script>*@
-
+@section scripts {
     <script type="text/javascript">
         $(function () {
             $(".showOrderClass").click(function () {
@@ -58,7 +58,7 @@
             <form>
                 <div class="input-group input-group-lg mb-3 ">
                     <div class="input-group-prepend">
-                        <span class="input-group-text text-bg-secondary bg-warning font-weight-bold">Tilaus</span>
+                        <span class="input-group-text text-bg-secondary bg-warning font-weight-bold">TilausID</span>
                     </div>
                     <input type="text" class="form-control bg-warning text-bg-secondary font-weight-bold px-2" value="Asiakas" disabled>
                     <input type="text" class="form-control bg-warning text-bg-secondary font-weight-bold px-2" value="Postitoimipaikka" disabled>

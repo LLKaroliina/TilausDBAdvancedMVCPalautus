@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TilausDBAdvancedMVCPalautus.Models;
 using TilausDBAdvancedMVCPalautus.ViewModels;
+using PagedList;
 
 namespace TilausDBAdvancedMVCPalautus.Controllers
 {
@@ -154,6 +155,7 @@ namespace TilausDBAdvancedMVCPalautus.Controllers
                                    TilausriviID = (int)td.TilausriviID
 
                                };
+            ViewBag.TotalOrders = orderSummary.Count();
 
 
             return View(orderSummary);

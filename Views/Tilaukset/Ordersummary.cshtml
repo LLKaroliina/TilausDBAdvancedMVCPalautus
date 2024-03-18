@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<TilausDBAdvancedMVCPalautus.ViewModels.OrderSummaryData>
 
+@{
+    ViewBag.Title = "Ordersummary";
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -29,9 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Postinumero)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Postitoimipaikka)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Nimi)
         </th>
@@ -44,50 +48,51 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilausID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AsiakasID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TuoteID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ahinta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toimitusosoite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tilauspvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toimituspvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postinumero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postitoimipaikka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Maara)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilausriviID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TilausID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsiakasID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TuoteID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ahinta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toimitusosoite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tilauspvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toimituspvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postinumero)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Postitoimipaikka)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Nimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TilausriviID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>

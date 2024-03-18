@@ -17,11 +17,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Osoite)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Postitoimipaikka)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)
+            @Html.DisplayNameFor(model => model.Postinumero)
         </th>
         <th></th>
     </tr>
@@ -34,16 +35,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Osoite)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Postitoimipaikka)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)
+            @Html.DisplayFor(modelItem => item.Postinumero)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AsiakasID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AsiakasID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AsiakasID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.AsiakasID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AsiakasID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AsiakasID })
         </td>
     </tr>
 }

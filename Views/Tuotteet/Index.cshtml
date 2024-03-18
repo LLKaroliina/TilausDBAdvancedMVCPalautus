@@ -17,15 +17,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Ahinta)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Kuva)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ImageLink)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.KategoriaID)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -37,15 +37,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ahinta)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Kuva)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ImageLink)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.KategoriaID)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TuoteID }) |
             @Html.ActionLink("Details", "Details", new { id=item.TuoteID }) |

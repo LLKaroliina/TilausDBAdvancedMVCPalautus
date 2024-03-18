@@ -31,5 +31,7 @@ namespace TilausDBAdvancedMVCPalautus.Models
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tilausrivit> Tilausrivit { get; set; }
+        public virtual Tilaukset Tilaukset1 { get; set; }
+        public virtual Tilaukset Tilaukset2 { get; set; }
     }
 }

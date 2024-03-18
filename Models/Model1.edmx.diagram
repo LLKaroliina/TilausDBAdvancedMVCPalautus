@@ -19,6 +19,7 @@
         <AssociationConnector Association="TilausDBModel.FK_Tilaukset_Postitoimipaikat" ManuallyRouted="false" />
         <AssociationConnector Association="TilausDBModel.FK_Tilausrivit_Tilaukset" />
         <AssociationConnector Association="TilausDBModel.FK_Tilausrivit_Tuotteet" />
+        <AssociationConnector Association="TilausDBModel.FK_Tilaukset_Tilaukset" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

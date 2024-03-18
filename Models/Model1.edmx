@@ -13,7 +13,7 @@
           <Property Name="Nimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Osoite" Type="nvarchar" MaxLength="50" />
           <Property Name="Postinumero" Type="char" MaxLength="5" />
-          <Property Name="Postitoimipaikka" Type="nchar" MaxLength="10" />
+          <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Henkilot">
           <Key>
@@ -127,27 +127,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tilausrivit_Tilaukset">
-          <End Role="Tilaukset" Type="Self.Tilaukset" Multiplicity="0..1" />
-          <End Role="Tilausrivit" Type="Self.Tilausrivit" Multiplicity="*" />
+        <Association Name="FK_Tilaukset_Tilaukset">
+          <End Role="Tilaukset" Type="Self.Tilaukset" Multiplicity="1" />
+          <End Role="Tilaukset1" Type="Self.Tilaukset" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Tilaukset">
               <PropertyRef Name="TilausID" />
             </Principal>
-            <Dependent Role="Tilausrivit">
+            <Dependent Role="Tilaukset1">
               <PropertyRef Name="TilausID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tilausrivit_Tuotteet">
-          <End Role="Tuotteet" Type="Self.Tuotteet" Multiplicity="0..1" />
-          <End Role="Tilausrivit" Type="Self.Tilausrivit" Multiplicity="*" />
+        <Association Name="FK_Tilaukset_Tilaukset1">
+          <End Role="Tilaukset" Type="Self.Tilaukset" Multiplicity="1" />
+          <End Role="Tilaukset1" Type="Self.Tilaukset" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Tuotteet">
-              <PropertyRef Name="TuoteID" />
+            <Principal Role="Tilaukset">
+              <PropertyRef Name="TilausID" />
             </Principal>
-            <Dependent Role="Tilausrivit">
-              <PropertyRef Name="TuoteID" />
+            <Dependent Role="Tilaukset1">
+              <PropertyRef Name="TilausID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -173,13 +173,13 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Tilaukset" EntitySet="Tilaukset" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tilausrivit_Tilaukset" Association="Self.FK_Tilausrivit_Tilaukset">
+          <AssociationSet Name="FK_Tilaukset_Tilaukset" Association="Self.FK_Tilaukset_Tilaukset">
             <End Role="Tilaukset" EntitySet="Tilaukset" />
-            <End Role="Tilausrivit" EntitySet="Tilausrivit" />
+            <End Role="Tilaukset1" EntitySet="Tilaukset" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tilausrivit_Tuotteet" Association="Self.FK_Tilausrivit_Tuotteet">
-            <End Role="Tuotteet" EntitySet="Tuotteet" />
-            <End Role="Tilausrivit" EntitySet="Tilausrivit" />
+          <AssociationSet Name="FK_Tilaukset_Tilaukset1" Association="Self.FK_Tilaukset_Tilaukset1">
+            <End Role="Tilaukset" EntitySet="Tilaukset" />
+            <End Role="Tilaukset1" EntitySet="Tilaukset" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -194,7 +194,7 @@
           <Property Name="Nimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="Postitoimipaikka" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK_Asiakkaat_Postitoimipaikat" FromRole="Asiakkaat" ToRole="Postitoimipaikat" />
           <NavigationProperty Name="Tilaukset" Relationship="Self.FK_Tilaukset_Asiakkaat" FromRole="Asiakkaat" ToRole="Tilaukset" />
         </EntityType>
@@ -257,6 +257,8 @@
           <NavigationProperty Name="Asiakkaat" Relationship="Self.FK_Tilaukset_Asiakkaat" FromRole="Tilaukset" ToRole="Asiakkaat" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK_Tilaukset_Postitoimipaikat" FromRole="Tilaukset" ToRole="Postitoimipaikat" />
           <NavigationProperty Name="Tilausrivit" Relationship="TilausDBModel.FK_Tilausrivit_Tilaukset" FromRole="Tilaukset" ToRole="Tilausrivit" />
+          <NavigationProperty Name="Tilaukset1" Relationship="TilausDBModel.FK_Tilaukset_Tilaukset" FromRole="Tilaukset" ToRole="Tilaukset1" />
+          <NavigationProperty Name="Tilaukset2" Relationship="TilausDBModel.FK_Tilaukset_Tilaukset" FromRole="Tilaukset1" ToRole="Tilaukset" />
         </EntityType>
         <EntityType Name="Tilausrivit">
           <Key>
@@ -348,6 +350,10 @@
             <End Role="Tuotteet" EntitySet="Tuotteet" />
             <End Role="Tilausrivit" EntitySet="Tilausrivit" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tilaukset_Tilaukset" Association="TilausDBModel.FK_Tilaukset_Tilaukset">
+            <End Role="Tilaukset" EntitySet="Tilaukset" />
+            <End Role="Tilaukset1" EntitySet="Tilaukset" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Tilausrivit_Tilaukset">
           <End Type="TilausDBModel.Tilaukset" Role="Tilaukset" Multiplicity="0..1" />
@@ -370,6 +376,18 @@
             </Principal>
             <Dependent Role="Tilausrivit">
               <PropertyRef Name="TuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tilaukset_Tilaukset">
+          <End Type="TilausDBModel.Tilaukset" Role="Tilaukset" Multiplicity="1" />
+          <End Type="TilausDBModel.Tilaukset" Role="Tilaukset1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tilaukset">
+              <PropertyRef Name="TilausID" />
+            </Principal>
+            <Dependent Role="Tilaukset1">
+              <PropertyRef Name="TilausID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
